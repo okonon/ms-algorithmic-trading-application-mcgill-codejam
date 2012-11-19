@@ -100,15 +100,15 @@ public abstract class Strategy {
      * @return the strategy's recommended course of action
      */
     protected int decideTradingAction() {
-
+		//Faster average crosses over slower average "from the top", indicating a downward trend.
         if (previousFastMovingAverage > previousSlowMovingAverage && currentFastMovingAverage < currentSlowMovingAverage) {
-            return BUY;
-        }
-
-        if (previousFastMovingAverage < previousSlowMovingAverage && currentFastMovingAverage > currentSlowMovingAverage) {
             return SELL;
-
         }
+
+		//Faster average crosses over slower average "from the botom", indicating an upward trend.
+        if (previousFastMovingAverage < previousSlowMovingAverage && currentFastMovingAverage > currentSlowMovingAverage) {
+            return BUY;
+			}
         return HOLD;
     }
 
